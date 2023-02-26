@@ -1,6 +1,9 @@
-name: Release
+name: Win10 Release
 
 on:
+  push:
+    branches:
+      - win10
   workflow_dispatch:
     inputs:
       version: 
