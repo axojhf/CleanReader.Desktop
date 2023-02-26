@@ -46,7 +46,7 @@ jobs:
     - name: Update manifest version
       run: |
         [xml]$manifest = get-content ".\$env:Desktop_Project_Directory\Package.appxmanifest"
-        $manifest.Package.Identity.Version = "${{$env:VERSION}}"
+        $manifest.Package.Identity.Version = $env:VERSION
         $manifest.save(".\$env:Desktop_Project_Directory\Package.appxmanifest")
         
     - name: Build x64
@@ -56,7 +56,7 @@ jobs:
         Configuration: Release
    
     - name: Create x64 archive
-      run: Compress-Archive -Path C:\Package\x64\CleanReader.Bundle_${{$env:VERSION}}_Test -DestinationPath C:\Package\CleanReader.Desktop_${{github.event.inputs.version}}_x64.zip
+      run: Compress-Archive -Path C:\Package\x64\CleanReader.Bundle_$env:VERSION_Test -DestinationPath C:\Package\CleanReader.Desktop_$env:VERSION_x64.zip
 
     - name: Release
       uses: softprops/action-gh-release@v1
