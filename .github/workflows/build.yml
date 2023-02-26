@@ -56,10 +56,10 @@ jobs:
         Configuration: Release
    
     - name: Create x64 archive
-      run: Compress-Archive -Path C:\Package\x64\CleanReader.Bundle_$env:VERSION_Test -DestinationPath C:\Package\CleanReader.Desktop_$env:VERSION_x64.zip
+      run: 7z a C:\Package\x64\CleanReader.Bundle_Test.7z C:\Package\CleanReader.Bundle_0.0.0.1_Test
 
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: C:\Package\CleanReader.Desktop_$env:VERSION_x64.zip
+        files: C:\Package\x64\CleanReader.Bundle_Test.7z
