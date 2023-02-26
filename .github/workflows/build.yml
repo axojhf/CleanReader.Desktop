@@ -62,4 +62,4 @@ jobs:
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: C:\Package\CleanReader.Desktop_${{$env:VERSION}}_x64.zip
+        files: C:\Package\CleanReader.Desktop_$env:VERSION_x64.zip
